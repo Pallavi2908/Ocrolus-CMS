@@ -1,7 +1,9 @@
 import express from "express";
 import connDB from "./utils/db.js";
 import articleRoutes from "./routes/articleRoutes.js";
+import cors from "cors";
 const app = express();
+app.use(cors());
 app.use(express.json());
 const PORT = 3000;
 connDB();

@@ -1,4 +1,5 @@
 import Article from "../models/articleModel.js";
+import User from "../models/userModel.js";
 
 //helper function ->
 const helper = (article, userId, res) => {
