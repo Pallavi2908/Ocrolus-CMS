@@ -96,6 +96,45 @@ curl "http://localhost:3000/articles?page=2&limit=5"
 
 ---
 
+# API testing using cURL
+
+The following commands can be used to check the API endpoints. Kindly ensure server is up and running at 3000 before continuing.
+
+Replace <USER_TOKEN> with a valid user token as stored in the db and <ARTICLE_ID> with any existing article ID.
+
+```
+# Create a new article
+curl -X POST http://localhost:3000/articles/ \
+  -H "Content-Type: application/json" \
+  -H "Authorization: <USER_TOKEN>" \
+  -d '{"title":"My First Article","article_text":"This is the content of my first article."}'
+
+# Fetch an article by ID
+curl -H "Authorization: <USER_TOKEN>" http://localhost:3000/articles/<ARTICLE_ID>
+
+# Update an article
+curl -X PUT http://localhost:3000/articles/<ARTICLE_ID> \
+  -H "Content-Type: application/json" \
+  -H "Authorization: <USER_TOKEN>" \
+  -d '{"title":"Updated Title","article_text":"Updated content."}'
+
+# Delete an article
+curl -X DELETE http://localhost:3000/articles/<ARTICLE_ID> \
+  -H "Authorization: <USER_TOKEN>"
+
+# List all articles (with default pagination)
+curl http://localhost:3000/articles
+
+# List articles with pagination (page 2, limit 5)
+curl http://localhost:3000/articles?page=2&limit=5
+
+# Get recently viewed articles for a user
+curl -H "Authorization: <USER_TOKEN>" http://localhost:3000/articles/recent/viewed
+
+```
+
+---
+
 ## Authentication
 
 Use the `Authorization` header with the user’s token from the database.
